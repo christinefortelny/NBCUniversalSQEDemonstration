@@ -7,7 +7,7 @@ import helpers.ResponseValidator;
 import helpers.SearchUrlHelper;
 import io.restassured.response.Response;
 
-public class QueryParameterTest {
+public class SearchTermTest {
 	
   @Test
   public void searchTermLotsOfResults() {
