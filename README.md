@@ -9,7 +9,7 @@
 * Request unknown resource returns 404
 * Server error returns a 5XX response code.  (Figure out if there is a way to trigger this)
 
-### Other
+### General
 * search parameters are not case sensitive
 * single parameter empty returns error response
 * leading and trailing spaces in query parameters are ignored
@@ -19,8 +19,10 @@
 
 
 
+### Standard Response  
 
-### Standard Response Validation
+##### Standard Response Validation
+Validations to be run for tests that have success response
 * validate schema
 * validate response code 200
 * collection field is present
@@ -32,7 +34,8 @@
       * collection.metadata.total_hits is greater than zero when results expected
    * collection.href is present with value of the request url
    * collection.links is present when more than 100 results expected
-   
+
+
 
 ### q parameter (search term)
 * search term that returns lots of results, **apollo 11**
