@@ -3,23 +3,24 @@ import static io.restassured.RestAssured.given;
 
 import org.testng.annotations.Test;
 
-import helpers.SearchUrlHelper;
+import helpers.SearchRequestParameters;
+import helpers.SearchUrlCreator;
 
 public class StatusCodesTest {
 	
   @Test
   public void successfulCallReturns200() {
-	  given().when().get(SearchUrlHelper.createSearchUrlWithQueryParameter("apollo 11")).then().assertThat().statusCode(200);
+	  given().when().get(SearchUrlCreator.createSearchUrl(new SearchRequestParameters().setSearchTerm("apollo 11"))).then().assertThat().statusCode(200);
   }
   
   @Test
   public void callUnknownResourceReturns404() {
-	  given().when().get(SearchUrlHelper.searchUrl+"/assets").then().assertThat().statusCode(404);
+	  given().when().get(SearchUrlCreator.searchUrl+"/assets").then().assertThat().statusCode(404);
   }
   
   @Test
   public void callNoParametersReturns400() {
-	  given().when().get(SearchUrlHelper.searchUrl).then().assertThat().statusCode(400);
+	  given().when().get(SearchUrlCreator.searchUrl).then().assertThat().statusCode(400);
   }
  
 }

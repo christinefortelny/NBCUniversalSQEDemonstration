@@ -130,8 +130,7 @@
 										"date_created",
 										"media_type",
 										"title",
-										"center",
-										"description"
+										"center"
 									],
 
 									"properties": 

@@ -1,13 +1,21 @@
 package helpers;
 
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import static org.hamcrest.Matchers.*;
+import static org.testng.Assert.assertTrue;
+
+import java.util.List;
+
+import ResponseStructure.SearchResponse;
+import ResponseStructure.SearchResponseData;
+import ResponseStructure.SearchResponseItem;
 
 import static io.restassured.RestAssured.*;
 import static io.restassured.matcher.RestAssuredMatchers.*;
 import static io.restassured.module.jsv.JsonSchemaValidator.*;
 
-public class ResponseValidator {
+public class SearchResponseValidator {
 	
 	private static String expectedVersion = "1.0";
 	
@@ -40,6 +48,27 @@ public class ResponseValidator {
 	public static void collectionLinksNotPresent(Response response) {
 
 		response.then().body("collection", not(hasKey("links")));
+	}
+	
+	public static void resultCollectionItemDataKeywordContainsQueryParam(Response response, String centerQueryParameter) {
+		SearchResponse searchResponse = response.getBody().as(SearchResponse.class);
+		for (SearchResponseItem responseItem : searchResponse.collection.items) {
+			for (SearchResponseData data : responseItem.data) {
+				assertTrue(data.center.toLowerCase().equals(centerQueryParameter.toLowerCase()), "Incorrect ceneter value");
+			}
+		}
+	}
+	
+	public static void resultCollectionItemDataDescriptionContainsQueryParam(Response response, String descriptionQueryParameter) {
+		String[] expectedTerms = descriptionQueryParameter.toLowerCase().split("\\s+");
+		SearchResponse searchResponse = response.getBody().as(SearchResponse.class);
+		for (SearchResponseItem responseItem : searchResponse.collection.items) {
+			for (SearchResponseData data : responseItem.data) {
+				for (String expecterdTerm : expectedTerms) {
+					assertTrue(data.description.toLowerCase().contains(expecterdTerm), "Description does not contain query param ");
+				}
+			}
+		}
 	}
 	
 	private static String encodeUrl(String url) {
