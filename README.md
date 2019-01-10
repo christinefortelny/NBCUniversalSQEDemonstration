@@ -26,14 +26,11 @@ Validations to be run for tests that have success response
 * validate schema
 * validate response code 200
 * collection field is present
-   * collection.version is present with value of "*0"
+   * collection.version is present with value of "1.0"
    * collection.items is present
    * collection.metadata is present
       * collection.metadata.total_hits is present
-      * collection.metadata.total_hits is zero when no results expected
-      * collection.metadata.total_hits is greater than zero when results expected
-   * collection.href is present with value of the request url
-   * collection.links is present when more than 100 results expected
+   * collection.href equals search url
 
 
 
@@ -246,7 +243,7 @@ Validations to be run for tests that have success response
 
 
 
-## Issues
+## Issues Found
 * Searching description for "puppy".  Search results were returned that include descriptions that do not contain "puppy"
 * For media type the spec lists available types  [“image”, “audio”].  "video" is also being returned and supported
 * result with nasa_id LRC-1962-B701_P-03646 has date_created of "0962-05-09T00:00:00Z"
