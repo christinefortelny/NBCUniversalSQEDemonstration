@@ -1,4 +1,4 @@
-# Christine Fortelny NBCUniversal Testing Craft Demonstration Challenge
+# NBCUniversal Testing Craft Demonstration Challenge
 
 
 
