@@ -70,7 +70,7 @@ Validations to be run for tests that have success response
    * collection.metadata.total_hits is greater than zero
    * collection.links is not present
     * for each collection.items[<index>].data[<index>].description contains description parameter
-* description that returns no results, **texas**
+* description that returns no results, **kitten**
    * execute standard response validation
    * collection.metadata.total_hits is zero
    * collection.links is not present
