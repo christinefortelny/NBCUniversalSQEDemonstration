@@ -1,0 +1,224 @@
+{
+	"definitions": 
+	{
+		
+	},
+
+	"$schema": "http://json-schema.org/draft-/schema#",
+	"type": "object",
+	"title": "The Root Schema",
+	"required": 
+	[
+		"collection"
+	],
+
+	"properties": 
+	{
+		"collection": 
+		{
+			"type": "object",
+			"title": "The Collection Schema",
+			"required": 
+			[
+				"version",
+				"metadata",
+				"items",
+				"href"
+			],
+
+			"properties": 
+			{
+				"links": 
+				{
+					"type": "array",
+					"title": "The Links Schema",
+					"items": 
+					{
+						"type": "object",
+						"title": "The Items Schema",
+						"required": 
+						[
+							"prompt",
+							"rel",
+							"href"
+						],
+
+						"properties": 
+						{
+							"prompt": 
+							{
+								"type": "string",
+								"title": "The Prompt Schema",
+								"default": "",
+								"pattern": "^(.*)$"
+							},
+
+							"rel": 
+							{
+								"type": "string",
+								"title": "The Rel Schema",
+								"default": "",
+								"pattern": "^(.*)$"
+							},
+
+							"href": 
+							{
+								"type": "string",
+								"title": "The Href Schema",
+								"default": "",
+								"pattern": "^(.*)$"
+							}
+						}
+					}
+				},
+
+				"version": 
+				{
+					"type": "string",
+					"title": "The Version Schema",
+					"default": "",
+					"pattern": "^(.*)$"
+				},
+
+				"metadata": 
+				{
+					"type": "object",
+					"title": "The Metadata Schema",
+					"required": 
+					[
+						"total_hits"
+					],
+
+					"properties": 
+					{
+						"total_hits": 
+						{
+							"type": "integer",
+							"title": "The Total_hits Schema",
+							"default": 0
+						}
+					}
+				},
+
+				"items": 
+				{
+					"type": "array",
+					"title": "The Items Schema",
+					"items": 
+					{
+						"type": "object",
+						"title": "The Items Schema",
+						"required": 
+						[
+							"data",
+							"href"
+						],
+
+						"properties": 
+						{
+							"data": 
+							{
+								"type": "array",
+								"title": "The Data Schema",
+								"items": 
+								{
+									"type": "object",
+									"title": "The Items Schema",
+									"required": 
+									[
+										"nasa_id",
+										"date_created",
+										"media_type",
+										"title",
+										"center",
+										"description"
+									],
+
+									"properties": 
+									{
+										"nasa_id": 
+										{
+											"type": "string",
+											"title": "The Nasa_id Schema",
+											"default": "",
+											"pattern": "^(.*)$"
+										},
+
+										"keywords": 
+										{
+											"type": "array",
+											"title": "The Keywords Schema",
+											"items": 
+											{
+												"type": "string",
+												"title": "The Items Schema",
+												"default": "",
+												"pattern": "^(.*)$"
+											}
+										},
+
+										"date_created": 
+										{
+											"type": "string",
+											"title": "The Date_created Schema",
+											"default": "",
+											"pattern": "^(.*)$"
+										},
+
+										"media_type": 
+										{
+											"type": "string",
+											"title": "The Media_type Schema",
+											"default": "",
+											"pattern": "^(.*)$"
+										},
+
+										"title": 
+										{
+											"type": "string",
+											"title": "The Title Schema",
+											"default": "",
+											"pattern": "^(.*)$"
+										},
+
+										"center": 
+										{
+											"type": "string",
+											"title": "The Center Schema",
+											"default": "",
+											"pattern": "^(.*)$"
+										},
+
+										"description": 
+										{
+											"type": "string",
+											"title": "The Description Schema",
+											"default": "",
+											"pattern": "^(.*)$"
+										}
+									}
+								}
+							},
+
+							"href": 
+							{
+								"type": "string",
+								"title": "The Href Schema",
+								"default": "",
+								"pattern": "^(.*)$"
+							}
+						}
+					}
+				},
+
+				"href": 
+				{
+					"type": "string",
+					"title": "The Href Schema",
+					"default": "",
+					"pattern": "^(.*)$"
+				}
+			}
+		}
+	}
+}
