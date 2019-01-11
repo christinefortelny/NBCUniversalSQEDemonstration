@@ -29,22 +29,10 @@ Valid request returns response 200 | q=sss |  response code 200 |
 ### q parameter (search term)
 Description  | request parameters | validations |
 :------------ | :-------------------| :----------- |
-search term that returns lots of results | q=apollo 11 |  [standard response validation](#standard-response-validation) <br> [total hits greater than zero](#total-hits-greater-than-zero) <br> [collection links present](#collection-links-present) |
-search term that returns no results | q=ablahblahblah |  standard response validation<br> collection.metadata.total_hits is zero<br>collection.links is not present |
+search term returns lots of results | q=apollo 11 | [standard response validation](#standard-response-validation)<br>[total hits greater than zero](#total-hits-greater-than-zero)<br>[collection links present](#collection-links-present) |
+search term returns no results | q=ablahblahblah | [standard response validation](#standard-response-validation)<br>total hits zero](#total-hits-zero)<br>[collection links not present](#collection-links-not-present) |
+search term returns less than 100 results | q=aolar eclipse japan | [standard response validation](#standard-response-validation)<br>[total hits greater than zero](#total-hits-greater-than-zero)<br>[collection links not present](#collection-links-not-present) |
 
-
-* search term that returns lots of results, **apollo 11**
-    * execute standard response validation
-    * collection.metadata.total_hits is greater than zero
-    * collection.links is present
-* search term that returns no results, **blahblahblah**
-   * execute standard response validation
-   * collection.metadata.total_hits is zero
-   * collection.links is not present
-* search term that returns less than 100 results, **solar eclipse japan**
-   * execute standard response validation
-   * collection.metadata.total_hits is greater than zero
-   * collection.links is not present
 
 ### center parameter (NASA center)
 * center parameter that returns lots of results, **HQ**
@@ -246,18 +234,26 @@ Validations to be run for tests that have success response
 ### Standard Response Validation
 * validate schema
 * validate response code 200
-* collection field is present
-   * collection.version is present with value of "1.0"
-   * collection.items is present
-   * collection.metadata is present
-      * collection.metadata.total_hits is present
-   * collection.href equals search url
+* `collection` field is present
+   * `collection.version` is present with value of "1.0"
+   * `collection.items` is present
+   * `collection.metadata` is present
+      * `collection.metadata.total_hits` is present
+   * `collection.href` equals search url
 
 ### total hits greater than zero
-* validate collection.metadata.total_hits is greater than zero
+* validate `collection.metadata.total_hits` is greater than zero
+
+### total hits zero
+* validate `collection.metadata.total_hits` equals zero
+
 
 ### collection links present
-* validate collection.links present
+* validate `collection.links` exists
+
+### collection links not present
+* validate `collection.links` does not exist
+
 
 
 ## Issues Found
