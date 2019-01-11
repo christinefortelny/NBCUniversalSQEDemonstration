@@ -29,7 +29,7 @@ Valid request returns response 200 | q=sss |  response code 200 |
 ### q parameter (search term)
 Description  | request parameters | validations |
 :------------ | :-------------------| :----------- |
-search term that returns lots of results | q=apollo 11 |  [standard response validation](#standard-response-validation) <br> [total hits greater than zero](total-hits-greater-than-zero) <br> [collection links present](collection-links-present) |
+search term that returns lots of results | q=apollo 11 |  [standard response validation](#standard-response-validation) <br> [total hits greater than zero](#total-hits-greater-than-zero) <br> [collection links present](#collection-links-present) |
 search term that returns no results | q=ablahblahblah |  standard response validation<br> collection.metadata.total_hits is zero<br>collection.links is not present |
 
 
