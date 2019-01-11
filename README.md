@@ -1,40 +1,38 @@
 # NBCUniversal Testing Craft Demonstration Challenge
+Test Cases for the search end point https://images.nasa.gov/docs/images.nasa.gov_api_docs.pdf
 
+Automated test cases are written in java using RestAssured, TestNg, and maven.  Test cases that have been automated are for status codes, search term parameter, center parameter, and description parameter.
+ 
 
 
 ## Test Cases
-### Status Codes
-* Valid request returns 200 response
-* Request with no parameters returns a 400
-* Request unknown resource returns 404
-* Server error returns a 5XX response code.  (Figure out if there is a way to trigger this)
-
 ### General
 * search parameters are not case sensitive
 * single parameter empty returns error response
 * leading and trailing spaces in query parameters are ignored
 * year_start less than four digits
 * year_end less than four digits
+* if possible trigger a request that returns a 5XX response code
 
 
 
 
-### Standard Response  
-
-##### Standard Response Validation
-Validations to be run for tests that have success response
-* validate schema
-* validate response code 200
-* collection field is present
-   * collection.version is present with value of "1.0"
-   * collection.items is present
-   * collection.metadata is present
-      * collection.metadata.total_hits is present
-   * collection.href equals search url
-
+### Status Codes
+Description  | request parameters | validations |
+:------------ | :-------------------| :----------- |
+Valid request returns 200 response | q=apollo 11 |  response code 200 |
+Request with no parameters returns 400 response | |  response code 400 |
+Request unknown resource returns 404 | /assets |  response code 404|
+Valid request returns response 200 | q=sss |  response code 200 |
 
 
 ### q parameter (search term)
+Description  | request parameters | validations |
+:------------ | :-------------------| :----------- |
+search term that returns lots of results | q=apollo 11 |  [standard response validation](#standard-response-validation)<br> collection.metadata.total_hits is greater than zero<br>collection.links is present |
+search term that returns no results | q=ablahblahblah |  standard response validation<br> collection.metadata.total_hits is zero<br>collection.links is not present |
+
+
 * search term that returns lots of results, **apollo 11**
     * execute standard response validation
     * collection.metadata.total_hits is greater than zero
@@ -239,6 +237,20 @@ Validations to be run for tests that have success response
 * search that uses all parameters
     * execute standard response validation
     * for each collection items validate that each of the search parameters matches
+
+
+
+##### Standard Response Validation
+Validations to be run for tests that have success response
+* validate schema
+* validate response code 200
+* collection field is present
+   * collection.version is present with value of "1.0"
+   * collection.items is present
+   * collection.metadata is present
+      * collection.metadata.total_hits is present
+   * collection.href equals search url
+
 
 
 
