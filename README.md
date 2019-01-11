@@ -242,6 +242,7 @@ search term that returns no results | q=ablahblahblah |  standard response valid
 
 ## Standard Response Validations
 Validations to be run for tests that have success response
+
 ### Standard Response Validation
 * validate schema
 * validate response code 200
@@ -252,10 +253,10 @@ Validations to be run for tests that have success response
       * collection.metadata.total_hits is present
    * collection.href equals search url
 
-## total hits greater than zero
+### total hits greater than zero
 * validate collection.metadata.total_hits is greater than zero
 
-## collection links present
+### collection links present
 * validate collection.links present
 
 
