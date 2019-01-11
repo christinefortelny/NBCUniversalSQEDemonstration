@@ -29,7 +29,7 @@ Valid request returns response 200 | q=sss |  response code 200 |
 ### q parameter (search term)
 Description  | request parameters | validations |
 :------------ | :-------------------| :----------- |
-search term that returns lots of results | q=apollo 11 |  [standard response validation](#standard-response-validation)<br> collection.metadata.total_hits is greater than zero<br>collection.links is present |
+search term that returns lots of results | q=apollo 11 |  [standard response validation](#standard-response-validation) <br> [total hits greater than zero](total-hits-greater-than-zero) <br> [collection links present](collection-links-present) |
 search term that returns no results | q=ablahblahblah |  standard response validation<br> collection.metadata.total_hits is zero<br>collection.links is not present |
 
 
@@ -240,8 +240,9 @@ search term that returns no results | q=ablahblahblah |  standard response valid
 
 
 
-##### Standard Response Validation
+## Standard Response Validations
 Validations to be run for tests that have success response
+### Standard Response Validation
 * validate schema
 * validate response code 200
 * collection field is present
@@ -251,8 +252,11 @@ Validations to be run for tests that have success response
       * collection.metadata.total_hits is present
    * collection.href equals search url
 
+## total hits greater than zero
+* validate collection.metadata.total_hits is greater than zero
 
-
+## collection links present
+* validate collection.links present
 
 
 ## Issues Found
