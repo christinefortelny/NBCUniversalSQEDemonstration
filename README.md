@@ -18,215 +18,553 @@ Automated test cases are written in java using RestAssured, TestNg, and maven.  
 
 
 ### Status Codes
-Description  | request parameters | validations |
-:------------ | :-------------------| :----------- |
-Valid request returns 200 response | q=apollo 11 |  response code 200 |
-Request with no parameters returns 400 response | |  response code 400 |
-Request unknown resource returns 404 | /assets |  response code 404|
-Valid request returns response 200 | q=sss |  response code 200 |
-
+<table valign="top">
+	<tr>
+		<th valign="top" align="left">Description</th>
+    	<th valign="top" align="left">request parameters</th> 
+    	<th valign="top" align="left">validations</th>
+	</tr>
+	<tr>
+		<td valign="top" align="left">Valid request returns 200 response</td>
+		<td valign="top" align="left">q=apollo 11 </td>
+		<td valign="top" align="left"> response code 200</td>
+	</tr>
+	<tr>
+		<td valign="top" align="left">Request with no parameters returns 400 response</td>
+		<td valign="top" align="left">  1 </td>
+		<td valign="top" align="left"> response code 400</td>
+	</tr>
+	<tr>
+		<td valign="top" align="left">Request unknown resource returns 404</td>
+		<td valign="top" align="left">/assets </td>
+		<td valign="top" align="left"> response code 404</td>
+	</tr>
+</table>
 
 ### q parameter (search term)
-Description  | request parameters | validations |
-:------------ | :-------------------| :----------- |
-search term returns lots of results | q=apollo 11 | [standard response validation](#standard-response-validation)<br>[total hits greater than zero](#total-hits-greater-than-zero)<br>[collection links present](#collection-links-present) |
-search term returns no results | q=ablahblahblah | [standard response validation](#standard-response-validation)<br>[total hits zero](#total-hits-zero)<br>[collection links not present](#collection-links-not-present) |
-search term returns less than 100 results | q=aolar eclipse japan | [standard response validation](#standard-response-validation)<br>[total hits greater than zero](#total-hits-greater-than-zero)<br>[collection links not present](#collection-links-not-present) |
+<table valign="top">
+	<tr>
+		<th valign="top" align="left">Description</th>
+    	<th valign="top" align="left">request parameters</th> 
+    	<th valign="top" align="left">validations</th>
+	</tr>
+	<tr>
+		<td valign="top" align="left">search term returns lots of results</td>
+		<td valign="top" align="left">q=apollo 11</td>
+		<td valign="top" align="left"> 
+			<a href="#standard-response-validation">standard response validation</a><br>
+			<a href="#total-hits-greater-than-zero">total hits greater than zero</a><br>
+			<a href="#collection-links-present">collection links present</a><br>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" align="left">search term returns no results</td>
+		<td valign="top" align="left">q=ablahblahblah</td>
+		<td valign="top" align="left"> 
+			<a href="#standard-response-validation">standard response validation</a><br>
+			<a href="#total-hits-zero">total hits zero</a><br>
+			<a href="#collection-links-not-present">collection links not present</a><br>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" align="left">search term returns less than 100 results</td>
+		<td valign="top" align="left">q=aolar eclipse japan</td>
+		<td valign="top" align="left"> 
+			<a href="#standard-response-validation">standard response validation</a><br>
+			<a href="#total-hits-greater-than-zero">total hits greater than zero</a><br>
+			<a href="#collection-links-not-present">collection links not present</a><br>
+		</td>
+	</tr>
+</table>
 
 
 ### center parameter (NASA center)
-* center parameter that returns lots of results, **HQ**
-    * execute standard response validation
-    * collection.metadata.total_hits is greater than zero
-    * collection.links is present
-    * for each collection.items[<index>].data[<index>].center equals center parameter
-* center parameter that returns no results, **texas**
-   * execute standard response validation
-   * collection.metadata.total_hits is zero
-   * collection.links is not present
-   
+<table valign="top">
+	<tr>
+		<th valign="top" align="left">Description</th>
+    	<th valign="top" align="left">request parameters</th> 
+    	<th valign="top" align="left">validations</th>
+	</tr>
+	<tr>
+		<td valign="top" align="left">center parameter that returns lots of results</td>
+		<td valign="top" align="left">center=HQ</td>
+		<td valign="top" align="left"> 
+			<a href="#standard-response-validation">standard response validation</a><br>
+			<a href="#total-hits-greater-than-zero">total hits greater than zero</a><br>
+			<a href="#collection-links-present">collection links present</a><br>
+			<a href="#result-collection-item-validation-center-field">result collection item validation center field</a><br>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" align="left">center parameter that returns no results</td>
+		<td valign="top" align="left">center=texas</td>
+		<td valign="top" align="left"> 
+			<a href="#standard-response-validation">standard response validation</a><br>
+			<a href="#total-hits-zero">total hits zero</a><br>
+			<a href="#collection-links-not-present">collection links not present</a><br>
+		</td>
+	</tr>
+</table>
+
 ### description
-* description that returns lots of results, **moon walk**
-    * execute standard response validation
-    * collection.metadata.total_hits is greater than zero
-    * collection.links is present
-    * for each collection.items[<index>].data[<index>].description contains description parameter
-* description that returns less than 100 results, **solar eclipse japan**
-   * execute standard response validation
-   * collection.metadata.total_hits is greater than zero
-   * collection.links is not present
-    * for each collection.items[<index>].data[<index>].description contains description parameter
-* description that returns no results, **kitten**
-   * execute standard response validation
-   * collection.metadata.total_hits is zero
-   * collection.links is not present
+<table valign="top">
+	<tr>
+		<th valign="top" align="left">Description</th>
+    	<th valign="top" align="left">request parameters</th> 
+    	<th valign="top" align="left">validations</th>
+	</tr>
+	<tr>
+		<td valign="top" align="left">description that returns lots of results</td>
+		<td valign="top" align="left">description=moon walk </td>
+		<td valign="top" align="left"> 
+			<a href="#standard-response-validation">standard response validation</a><br>
+			<a href="#total-hits-greater-than-zero">total hits greater than zero</a><br>
+			<a href="#collection-links-present">collection links present</a><br>
+			<a href="#result-collection-item-validation-description-field">result collection item validation description field</a><br>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" align="left">description that returns less than 100 results</td>
+		<td valign="top" align="left">description=solar eclipse japan</td>
+		<td valign="top" align="left"> 
+			<a href="#standard-response-validation">standard response validation</a><br>
+			<a href="#total-hits-greater-than-zero">total hits greater than zero</a><br>
+			<a href="#collection-links-not-present">collection links not present</a><br>
+			<a href="#result-collection-item-validation-description-field">result collection item validation description field</a><br>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" align="left">description that returns no results</td>
+		<td valign="top" align="left">description=kitten</td>
+		<td valign="top" align="left"> 
+			<a href="#standard-response-validation">standard response validation</a><br>
+			<a href="#total-hits-zero">total hits zero</a><br>
+			<a href="#collection-links-not-present">collection links not present</a><br>
+		</td>
+	</tr>
+</table>
+
    
 ### description_508
-* description_508 that returns lots of results, **spacecraft**
-    * execute standard response validation
-    * collection.metadata.total_hits is greater than zero
-    * collection.links is present
-    * for each collection.items[<index>].data[<index>].description_508 contains description_508 parameter
-* description_508 that returns less than 100 results, **Stratospheric Observatory For Infrared Astronomy**
-   * execute standard response validation
-   * collection.metadata.total_hits is greater than zero
-   * for each collection.items[<index>].data[<index>].description_508 contains description_508 parameter
-   * collection.links is not present    
-* description_508 that returns no results, **kitten**
-   * execute standard response validation
-   * collection.metadata.total_hits is zero
-   * collection.links is not present
-    
+<table valign="top">
+	<tr>
+		<th valign="top" align="left">Description</th>
+    	<th valign="top" align="left">request parameters</th> 
+    	<th valign="top" align="left">validations</th>
+	</tr>
+	<tr>
+		<td valign="top" align="left">description_508 that returns lots of results</td>
+		<td valign="top" align="left">description_508=spacecraft</td>
+		<td valign="top" align="left"> 
+			<a href="#standard-response-validation">standard response validation</a><br>
+			<a href="#total-hits-greater-than-zero">total hits greater than zero</a><br>
+			<a href="#collection-links-present">collection links present</a><br>
+			<a href="#result-collection-item-validation-description_508-field">result collection item validation description_508 field</a><br>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" align="left">description_508 that returns less than 100 results</td>
+		<td valign="top" align="left">description_508=Stratospheric Observatory For Infrared Astronomy</td>
+		<td valign="top" align="left"> 
+			<a href="#standard-response-validation">standard response validation</a><br>
+			<a href="#total-hits-greater-than-zero">total hits greater than zero</a><br>
+			<a href="#collection-links-not-present">collection links not present</a><br>
+			<a href="#result-collection-item-validation-description-field">result collection item validation description field</a><br>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" align="left">description_508 that returns no results</td>
+		<td valign="top" align="left">description_508=kitten</td>
+		<td valign="top" align="left"> 
+			<a href="#standard-response-validation">standard response validation</a><br>
+			<a href="#total-hits-zero">total hits zero</a><br>
+			<a href="#collection-links-not-present">collection links not present</a><br>
+		</td>
+	</tr>
+</table>
+  
 ### keywords
-* keyword that returns lots of results, **moon**
-    * execute standard response validation
-    * collection.metadata.total_hits is greater than zero
-    * collection.links is present
-    * for each collection.items[<index>].data[<index>].keywords[] contains at least one entry that contains the keyword
-* keyword that returns less than 100 results, **weather balloon**
-    * execute standard response validation
-    * collection.metadata.total_hits is greater than zero
-    * collection.links is present
-    * for each collection.items[<index>].data[<index>].keywords[] contains at least one entry that contains the keyword
-* multiple keywords **moon,weather balloon**
-    * execute standard response validation
-    * collection.metadata.total_hits is greater than zero
-    * collection.links is present
-    * for each collection.items[<index>].data[<index>].keywords[] contains at least one entry that contains at least one of the keywords
-* keywords that returns no results, **muffin*
-   * execute standard response validation
-   * collection.metadata.total_hits is zero
-   * collection.links is not present
+<table valign="top">
+	<tr>
+		<th valign="top" align="left">Description</th>
+    	<th valign="top" align="left">request parameters</th> 
+    	<th valign="top" align="left">validations</th>
+	</tr>
+	<tr>
+		<td valign="top" align="left">keyword that returns lots of results</td>
+		<td valign="top" align="left">keywords=moon</td>
+		<td valign="top" align="left"> 
+			<a href="#standard-response-validation">standard response validation</a><br>
+			<a href="#total-hits-greater-than-zero">total hits greater than zero</a><br>
+			<a href="#collection-links-present">collection links present</a><br>
+			<a href="#result-collection-item-validation-keywords-array">result collection item validation keywords array</a><br>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" align="left">keyword that returns less than 100 results</td>
+		<td valign="top" align="left">keywords=weather balloon</td>
+		<td valign="top" align="left"> 
+			<a href="#standard-response-validation">standard response validation</a><br>
+			<a href="#total-hits-greater-than-zero">total hits greater than zero</a><br>
+			<a href="#collection-links-not-present">collection links not present</a><br>
+			<a href="#result-collection-item-validation-keywords-array">result collection item validation keywords array</a><br>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" align="left">multiple keywords</td>
+		<td valign="top" align="left">keywords=moon,weather balloon</td>
+		<td valign="top" align="left"> 
+			<a href="#standard-response-validation">standard response validation</a><br>
+			<a href="#total-hits-greater-than-zero">total hits greater than zero</a><br>
+			<a href="#collection-links-present">collection links present</a><br>
+			<a href="#result-collection-item-validation-keywords-array">result collection item validation keywords array</a><br>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" align="left">keywords that returns no results</td>
+		<td valign="top" align="left">keywords=muffin</td>
+		<td valign="top" align="left"> 
+			<a href="#standard-response-validation">standard response validation</a><br>
+			<a href="#total-hits-zero">total hits zero</a><br>
+			<a href="#collection-links-not-present">collection links not present</a><br>
+			<a href="#result-collection-item-validation-keywords-array">result collection item validation keywords array</a><br>
+		</td>
+	</tr>
+</table>
 
 ### location
-* location that returns lots of results, **Cape Canaveral, FL**
-    * execute standard response validation
-    * collection.metadata.total_hits is greater than zero
-    * collection.links is present
-    * for each collection.items[<index>].data[<index>].location contains location parameter
-* location that returns no results, **main**
-   * execute standard response validation
-   * collection.metadata.total_hits is zero
-   * collection.links is not present
-* location that returns less than 100 results, *Carolina**
-   * execute standard response validation
-   * collection.metadata.total_hits is greater than zero
-   * collection.links is not present
-   * for each collection.items[<index>].data[<index>].location contains location parameter
-    
+<table valign="top">
+	<tr>
+		<th valign="top" align="left">Description</th>
+    	<th valign="top" align="left">request parameters</th> 
+    	<th valign="top" align="left">validations</th>
+	</tr>
+	<tr>
+		<td valign="top" align="left">location that returns lots of results</td>
+		<td valign="top" align="left">location=Cape Canaveral, FL</td>
+		<td valign="top" align="left"> 
+			<a href="#standard-response-validation">standard response validation</a><br>
+			<a href="#total-hits-greater-than-zero">total hits greater than zero</a><br>
+			<a href="#collection-links-present">collection links present</a><br>
+			<a href="#result-collection-item-validation-location-field">result collection item validation location field</a><br>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" align="left">location that returns less than 100 results</td>
+		<td valign="top" align="left">location=Carolina </td>
+		<td valign="top" align="left"> 
+			<a href="#standard-response-validation">standard response validation</a><br>
+			<a href="#total-hits-greater-than-zero">total hits greater than zero</a><br>
+			<a href="#collection-links-not-present">collection links not present</a><br>
+			<a href="#result-collection-item-validation-location-field">result collection item validation location field</a><br>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" align="left">location that returns no results</td>
+		<td valign="top" align="left">location=main</td>
+		<td valign="top" align="left"> 
+			<a href="#standard-response-validation">standard response validation</a><br>
+			<a href="#total-hits-zero">total hits zero</a><br>
+			<a href="#result-collection-item-validation-location-field">result collection item validation location field</a><br>
+		</td>
+	</tr>
+</table>
+
 ### media_type
-* media type that returns lots of results, **image**
-    * execute standard response validation
-    * collection.metadata.total_hits is greater than zero
-    * collection.links is present
-    * for each collection.items[<index>].data[<index>].media_type equals media_type parameter
-* multiple media types *audio,video**
-    * execute standard response validation
-    * collection.metadata.total_hits is greater than zero
-    * collection.links is present
-    * for each collection.items[<index>].data[<index>].media_type equals one of the media_type parameters
-* media type that returns no results, **movie*
-   * execute standard response validation
-   * collection.metadata.total_hits is zero
-   * collection.links is not present
+<table valign="top">
+	<tr>
+		<th valign="top" align="left">Description</th>
+    	<th valign="top" align="left">request parameters</th> 
+    	<th valign="top" align="left">validations</th>
+	</tr>
+	<tr>
+		<td valign="top" align="left"> media type that returns lots of results</td>
+		<td valign="top" align="left">media_type=image</td>
+		<td valign="top" align="left"> 
+			<a href="#standard-response-validation">standard response validation</a><br>
+			<a href="#total-hits-greater-than-zero">total hits greater than zero</a><br>
+			<a href="#collection-links-present">collection links present</a><br>
+			<a href="#result-collection-item-validation-media_type-field">result collection item validation media_type field</a><br>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" align="left">multiple media types</td>
+		<td valign="top" align="left">media_type=audio,video</td>
+		<td valign="top" align="left"> 
+			<a href="#standard-response-validation">standard response validation</a><br>
+			<a href="#total-hits-zero">total hits zero</a><br>
+			<a href="#collection-links-present">collection links present</a><br>
+			<a href="#result-collection-item-validation-media_type-field">result collection item validation media_type field</a><br>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" align="left">media type that returns no results</td>
+		<td valign="top" align="left">media_type=movie</td>
+		<td valign="top" align="left"> 
+			<a href="#standard-response-validation">standard response validation</a><br>
+			<a href="#total-hits-zero">total hits zero</a><br>
+			<a href="#collection-links-not-present">collection links not present</a><br>
+		</td>
+	</tr>
+</table>
+
 
 ### nasa_id
-* nasa_id that returns lots of results, **01**
-    * execute standard response validation
-    * collection.metadata.total_hits is greater than zero
-    * collection.links is present
-    * for each collection.items[<index>].data[<index>].nasa_id contains the nasa_id parameter
-* nasa_id exact match, **KSC-99pd-812-01**
-    * execute standard response validation
-    * collection.metadata.total_hits is greater than zero
-    * collection.links is present
-    * for each collection.items[<index>].data[<index>].nasa_id equals nasa_id parameter
-* nasa_id that returns no results, **KSC-99pd-812-0112*
-   * execute standard response validation
-   * collection.metadata.total_hits is zero
-   * collection.links is not present
+<table valign="top">
+	<tr>
+		<th valign="top" align="left">Description</th>
+    	<th valign="top" align="left">request parameters</th> 
+    	<th valign="top" align="left">validations</th>
+	</tr>
+	<tr>
+		<td valign="top" align="left">nasa_id that returns lots of results</td>
+		<td valign="top" align="left">nasa_id=01</td>
+		<td valign="top" align="left"> 
+			<a href="#standard-response-validation">standard response validation</a><br>
+			<a href="#total-hits-greater-than-zero">total hits greater than zero</a><br>
+			<a href="#collection-links-present">collection links present</a><br>
+			<a href="#result-collection-item-validation-nasa_id-field">result collection item validation nasa_id field</a><br>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" align="left">nasa_id exact match</td>
+		<td valign="top" align="left">nasa_id=KSC-99pd-812-01</td>
+		<td valign="top" align="left"> 
+			<a href="#standard-response-validation">standard response validation</a><br>
+			<a href="#total-hits-greater-than-zero">total hits greater than zero</a><br>
+			<a href="#collection-links-present">collection links present</a><br>
+			<a href="#result-collection-item-validation-nasa_id-field">result collection item validation nasa_id field</a><br>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" align="left">nasa_id that returns no results</td>
+		<td valign="top" align="left">nasa_id=KSC-99pd-812-0112</td>
+		<td valign="top" align="left"> 
+			<a href="#standard-response-validation">standard response validation</a><br>
+			<a href="#total-hits-zero">total hits zero</a><br>
+			<a href="#collection-links-not-present">collection links not present</a><br>
+		</td>
+	</tr>
+</table>
 
- * collection.links is not present
 
 ### photographer
-* photographer single name, **sean**
-    * execute standard response validation
-    * collection.metadata.total_hits is greater than zero
-    * collection.links is present
-    * for each collection.items[<index>].data[<index>].photographer contains photographer parameter
-* photographer full name, **Lee Jones**
-    * execute standard response validation
-    * collection.metadata.total_hits is greater than zero
-    * collection.links is present
-    * for each collection.items[<index>].data[<index>].photographer contains photographer parameter
-* photographer that returns no results, **kitten*
-   * execute standard response validation
-   * collection.metadata.total_hits is zero
-   * collection.links is not present
+<table valign="top">
+	<tr>
+		<th valign="top" align="left">Description</th>
+    	<th valign="top" align="left">request parameters</th> 
+    	<th valign="top" align="left">validations</th>
+	</tr>
+	<tr>
+		<td valign="top" align="left">photographer single name</td>
+		<td valign="top" align="left">photographer=sean</td>
+		<td valign="top" align="left"> 
+			<a href="#standard-response-validation">standard response validation</a><br>
+			<a href="#total-hits-greater-than-zero">total hits greater than zero</a><br>
+			<a href="#collection-links-present">collection links present</a><br>
+			<a href="#result-collection-item-validation-photographer-field">result collection item validation photographer field</a><br>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" align="left">photographer full name</td>
+		<td valign="top" align="left">photographer=Lee Jones</td>
+		<td valign="top" align="left"> 
+			<a href="#standard-response-validation">standard response validation</a><br>
+			<a href="#total-hits-greater-than-zero">total hits greater than zero</a><br>
+			<a href="#collection-links-present">collection links present</a><br>
+			<a href="#result-collection-item-validation-photographer-field">result collection item validation photographer field</a><br>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" align="left">photographer that returns no results</td>
+		<td valign="top" align="left">photographer=kitten</td>
+		<td valign="top" align="left"> 
+			<a href="#standard-response-validation">standard response validation</a><br>
+			<a href="#total-hits-zero">total hits zero</a><br>
+			<a href="#collection-links-not-present">collection links not present</a><br>
+		</td>
+	</tr>
+</table>
+
 
 ### secondary_creator
-* secondary_creator single name, **Smith**
-    * execute standard response validation
-    * collection.metadata.total_hits is greater than zero
-    * collection.links is not present
-    * for each collection.items[<index>].data[<index>].secondary_creator contains secondary_creator parameter
-* secondary_creator that returns no results, **jones*
-   * execute standard response validation
-   * collection.metadata.total_hits is zero
-   * collection.links is not present
-
+<table valign="top">
+	<tr>
+		<th valign="top" align="left">Description</th>
+    	<th valign="top" align="left">request parameters</th> 
+    	<th valign="top" align="left">validations</th>
+	</tr>
+	<tr>
+		<td valign="top" align="left">secondary_creator single name</td>
+		<td valign="top" align="left">secondary_creator=Smith</td>
+		<td valign="top" align="left"> 
+			<a href="#standard-response-validation">standard response validation</a><br>
+			<a href="#total-hits-greater-than-zero">total hits greater than zero</a><br>
+			<a href="#collection-links-not-present">collection links not present</a><br>
+			<a href="#result-collection-item-validation-secondary_creator-field">result collection item validation secondary_creator field</a><br>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" align="left">secondary_creator that returns no results</td>
+		<td valign="top" align="left">secondary_creator=jones</td>
+		<td valign="top" align="left"> 
+			<a href="#standard-response-validation">standard response validation</a><br>
+			<a href="#total-hits-zero">total hits zero</a><br>
+			<a href="#collection-links-not-present">collection links not present</a><br>
+		</td>
+	</tr>
+</table>
 
 ### title
-* title that returns lots of results, **moon**
-    * execute standard response validation
-    * collection.metadata.total_hits is greater than zero
-    * collection.links is present
-    * for each collection.items[<index>].data[<index>].title contains the title parameter
-* title that returns less than 100 results, **muffin**
-    * execute standard response validation
-    * collection.metadata.total_hits is greater than zero
-    * collection.links is present
-    * for each collection.items[<index>].data[<index>].title contains the title parameter
-* title multiple terms separated by space **moon eclipse**
-    * execute standard response validation
-    * collection.metadata.total_hits is greater than zero
-    * collection.links is present
-    * for each collection.items[<index>].data[<index>].title contains each of the title parameters
-* title multiple terms separated by comma **moon,eclipse**
-    * execute standard response validation
-    * collection.metadata.total_hits is greater than zero
-    * collection.links is present
-    * for each collection.items[<index>].data[<index>].title contains each of the title parameters
-* title that returns no results, **kitten*
-   * execute standard response validation
-   * collection.metadata.total_hits is zero
-   * collection.links is not present
+<table valign="top">
+	<tr>
+		<th valign="top" align="left">Description</th>
+    	<th valign="top" align="left">request parameters</th> 
+    	<th valign="top" align="left">validations</th>
+	</tr>
+	<tr>
+		<td valign="top" align="left">title that returns lots of results</td>
+		<td valign="top" align="left">title=moon</td>
+		<td valign="top" align="left"> 
+			<a href="#standard-response-validation">standard response validation</a><br>
+			<a href="#total-hits-greater-than-zero">total hits greater than zero</a><br>
+			<a href="#collection-links-present">collection links present</a><br>
+			<a href="#result-collection-item-validation-title-field">result collection item validation title field</a><br>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" align="left">title that returns less than 100 results</td>
+		<td valign="top" align="left">title=muffin</td>
+		<td valign="top" align="left"> 
+			<a href="#standard-response-validation">standard response validation</a><br>
+			<a href="#total-hits-greater-than-zero">total hits greater than zero</a><br>
+			<a href="#collection-links-not-present">collection links not present</a><br>
+			<a href="#result-collection-item-validation-title-field">result collection item validation title field</a><br>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" align="left">title multiple terms separated by space</td>
+		<td valign="top" align="left">title=moon eclipse</td>
+		<td valign="top" align="left"> 
+			<a href="#standard-response-validation">standard response validation</a><br>
+			<a href="#total-hits-greater-than-zero">total hits greater than zero</a><br>
+			<a href="#collection-links-present">collection links present</a><br>
+			<a href="#result-collection-item-validation-title-field">result collection item validation title field</a><br>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" align="left">title multiple terms separated by comma</td>
+		<td valign="top" align="left">title=moon,eclipse </td>
+		<td valign="top" align="left"> 
+			<a href="#standard-response-validation">standard response validation</a><br>
+			<a href="#total-hits-greater-than-zero">total hits greater than zero</a><br>
+			<a href="#collection-links-present">collection links present</a><br>
+			<a href="#result-collection-item-validation-title-field">result collection item validation title field</a><br>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" align="left">title that returns no results</td>
+		<td valign="top" align="left">title=kitten/td>
+		<td valign="top" align="left"> 
+			<a href="#standard-response-validation">standard response validation</a><br>
+			<a href="#total-hits-zero">total hits zero</a><br>
+			<a href="#collection-links-not-present">collection links not present</a><br>
+		</td>
+	</tr>
+</table>
+
 
 ### year_start
-* year start that returns results, **2018**
-    * execute standard response validation
-    * collection.metadata.total_hits is greater than zero
-    * collection.links is present
-    * for each collection.items[<index>].data[<index>].date_created year is greater than or equal to year_start parameter
-* year start that no results, **3030*
-   * execute standard response validation
-   * collection.metadata.total_hits is zero
-   * collection.links is not present
-
+<table valign="top">
+	<tr>
+		<th valign="top" align="left">Description</th>
+    	<th valign="top" align="left">request parameters</th> 
+    	<th valign="top" align="left">validations</th>
+	</tr>
+	<tr>
+		<td valign="top" align="left">year start that returns results</td>
+		<td valign="top" align="left">year_start=2018</td>
+		<td valign="top" align="left"> 
+			<a href="#standard-response-validation">standard response validation</a><br>
+			<a href="#total-hits-greater-than-zero">total hits greater than zero</a><br>
+			<a href="#collection-links-present">collection links present</a><br>
+			<a href="#result-collection-item-validation-year_start-date_created-field">result collection item validation year_start date_created field</a><br>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" align="left">year start that no results</td>
+		<td valign="top" align="left">year_start=3030</td>
+		<td valign="top" align="left"> 
+			<a href="#standard-response-validation">standard response validation</a><br>
+			<a href="#total-hits-zero">total hits zero</a><br>
+			<a href="#collection-links-not-present">collection links not present</a><br>
+		</td>
+	</tr>
+</table>
 
 ### year_end
-* year end that returns results, **2018**
-    * execute standard response validation
-    * collection.metadata.total_hits is greater than zero
-    * collection.links is present
-    * for each collection.items[<index>].data[<index>].date_created year is less than or equal to year_end parameter
+<table valign="top">
+	<tr>
+		<th valign="top" align="left">Description</th>
+    	<th valign="top" align="left">request parameters</th> 
+    	<th valign="top" align="left">validations</th>
+	</tr>
+	<tr>
+		<td valign="top" align="left">year end that returns results</td>
+		<td valign="top" align="left">year_end =2018</td>
+		<td valign="top" align="left"> 
+			<a href="#standard-response-validation">standard response validation</a><br>
+			<a href="#total-hits-zero">total hits zero</a><br>
+			<a href="#collection-links-present">collection links present</a><br>
+			<a href="#result-collection-item-validation-year_end-date_created-field">result collection item validation year_end date_created field</a><br>
+		</td>
+	</tr>
+</table>
+
 
 ### all parameters
-* search that uses all parameters
-    * execute standard response validation
-    * for each collection items validate that each of the search parameters matches
-
-
+<table valign="top">
+	<tr>
+		<th valign="top" align="left">Description</th>
+    	<th valign="top" align="left">request parameters</th> 
+    	<th valign="top" align="left">validations</th>
+	</tr>
+	<tr>
+		<td valign="top" align="left">search that uses all parameters</td>
+		<td valign="top" align="left">
+			q=Aeronautics<br>
+			center=ARC
+			description=wind tunnel<br>
+			description_508=Airplane<br>
+			keywords=Douglas<br>
+			location=ames<br>
+			media_type=image<br>
+			nasa_id=A-<br>
+			photographer=NACA<br>
+			secondary_creator=Richey<br>
+			title=wind<br>
+			year_start=1940<br>
+			year_end=1950
+		 </td>
+		<td valign="top" align="left"> 
+			<a href="#standard-response-validation">standard response validation</a><br>
+			<a href="#total-hits-greater-than-zero">total hits greater than zero</a><br>
+			<a href="#collection-links-not-present">collection links not present</a><br>
+			<a href="#result-collection-item-validation-center-field">result collection item validation center field</a><br>
+			<a href="#result-collection-item-validation-description-field">result collection item validation description field</a><br>
+			<a href="#result-collection-item-validation-description_508-field">result collection item validation description_508 field</a><br>
+			<a href="#result-collection-item-validation-keywords-array">result collection item validation keywords array</a><br>
+			<a href="#result-collection-item-validation-location-field">result collection item validation location field</a><br>
+			<a href="#result-collection-item-validation-media_type-field">result collection item validation media_type field</a><br>
+			<a href="#result-collection-item-validation-nasa_id-field">result collection item validation nasa_id field</a><br>
+			<a href="#result-collection-item-validation-photographer-field">result collection item validation photographer field</a><br>
+			<a href="#result-collection-item-validation-secondary_creator-field">result collection item validation secondary_creator field</a><br>
+			<a href="#result-collection-item-validation-title-field">result collection item validation title field</a><br>
+			<a href="#result-collection-item-validation-year_start-date_created-field">result collection item validation year_start date_created field</a><br>
+			<a href="#result-collection-item-validation-year_end-date_created-field">result collection item validation year_end date_created field</a><br>
+		</td>
+	</tr>
+</table>
 
 ## Standard Response Validations
 Validations to be run for tests that have success response
@@ -254,6 +592,54 @@ Validations to be run for tests that have success response
 ### collection links not present
 * validate `collection.links` does not exist
 
+### result collection item validation center field
+ * validate for each collection.items[<index>].data[<index>].center exists
+ * validate for each collection.items[<index>].data[<index>].center equals center parameter
+
+### result collection item validation description field
+ * validate for each collection.items[<index>].data[<index>].description exists
+ * validate for each collection.items[<index>].data[<index>].description contains description parameter
+
+### result collection item validation description_508 field
+ * validate for each collection.items[<index>].data[<index>].description_508 exists
+ * validate for each collection.items[<index>].data[<index>].description_508 contains description parameter
+ 
+### result collection item validation keywords array
+ * validate for each collection.items[<index>].data[<index>].keywords[] exists
+ * validate for each collection.items[<index>].data[<index>].keywords[] contains at least one entry that contains on of the provided keywords
+
+### result collection item validation location field
+ * validate for each collection.items[<index>].data[<index>].location exists
+ * validate for each collection.items[<index>].data[<index>].location contains location parameter
+
+### result collection item validation media_type field
+ * validate for each collection.items[<index>].data[<index>].media_type exists
+ * validate for each collection.items[<index>].data[<index>].media_type equals one of the media_type parameters
+
+### result collection item validation nasa_id field
+ * validate for each collection.items[<index>].data[<index>].nasa_id exists
+ * validate for each collection.items[<index>].data[<index>].nasa_id contains the nasa_id parameter
+
+### result collection item validation photographer field
+ * validate for each collection.items[<index>].data[<index>].photographer exists
+ * validate for each collection.items[<index>].data[<index>].photographer contains photographer parameter
+
+### result collection item validation secondary_creator field
+ * validate for each collection.items[<index>].data[<index>].secondary_creator exists
+ * validate for each collection.items[<index>].data[<index>].secondary_creator contains secondary_creator parameter
+
+### result collection item validation title field
+ * validate for each collection.items[<index>].data[<index>].title exists
+ * validate for each collection.items[<index>].data[<index>].title contains each of the title parameters
+
+### result collection item validation year_start date_created field
+ * validate for each collection.items[<index>].data[<index>].date_created exists
+ * validate for each collection.items[<index>].data[<index>].date_created year is greater than or equal to year_start parameter
+ 
+### result collection item validation year_end date_created field
+ * validate for each collection.items[<index>].data[<index>].date_created exists
+ * validate for each collection.items[<index>].data[<index>].date_created year is less than or equal to year_end parameter 
+ 
 
 
 ## Issues Found
