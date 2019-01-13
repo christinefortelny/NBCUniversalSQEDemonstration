@@ -700,52 +700,52 @@ Validations to be run for tests that have success response
 * validate `collection.links` does not exist
 
 ### result collection item validation center field
- * validate for each collection.items[<index>].data[<index>].center exists
- * validate for each collection.items[<index>].data[<index>].center equals center parameter
+ * validate for each `collection.items[<index>].data[<index>].center` exists
+ * validate for each `collection.items[<index>].data[<index>].center` equals center parameter
 
 ### result collection item validation description field
- * validate for each collection.items[<index>].data[<index>].description exists
- * validate for each collection.items[<index>].data[<index>].description contains description parameter
+ * validate for each `collection.items[<index>].data[<index>].description` exists
+ * validate for each `collection.items[<index>].data[<index>].description` contains description parameter
 
 ### result collection item validation description_508 field
- * validate for each collection.items[<index>].data[<index>].description_508 exists
- * validate for each collection.items[<index>].data[<index>].description_508 contains description parameter
+ * validate for each `collection.items[<index>].data[<index>].description_508` exists
+ * validate for each `collection.items[<index>].data[<index>].description_508` contains description parameter
  
 ### result collection item validation keywords array
- * validate for each collection.items[<index>].data[<index>].keywords[] exists
- * validate for each collection.items[<index>].data[<index>].keywords[] contains at least one entry that contains on of the provided keywords
+ * validate for each `collection.items[<index>].data[<index>].keywords[]` exists
+ * validate for each `collection.items[<index>].data[<index>].keywords[]` contains at least one entry that contains on of the provided keywords
 
 ### result collection item validation location field
- * validate for each collection.items[<index>].data[<index>].location exists
- * validate for each collection.items[<index>].data[<index>].location contains location parameter
+ * validate for each `collection.items[<index>].data[<index>].location` exists
+ * validate for each `collection.items[<index>].data[<index>].location` contains location parameter
 
 ### result collection item validation media_type field
- * validate for each collection.items[<index>].data[<index>].media_type exists
- * validate for each collection.items[<index>].data[<index>].media_type equals one of the media_type parameters
+ * validate for each `collection.items[<index>].data[<index>].media_type` exists
+ * validate for each `collection.items[<index>].data[<index>].media_type` equals one of the media_type parameters
 
 ### result collection item validation nasa_id field
- * validate for each collection.items[<index>].data[<index>].nasa_id exists
- * validate for each collection.items[<index>].data[<index>].nasa_id contains the nasa_id parameter
+ * validate for each `collection.items[<index>].data[<index>].nasa_id` exists
+ * validate for each `collection.items[<index>].data[<index>].nasa_id` contains the nasa_id parameter
 
 ### result collection item validation photographer field
- * validate for each collection.items[<index>].data[<index>].photographer exists
- * validate for each collection.items[<index>].data[<index>].photographer contains photographer parameter
+ * validate for each `collection.items[<index>].data[<index>].photographer` exists
+ * validate for each `collection.items[<index>].data[<index>].photographer` contains photographer parameter
 
 ### result collection item validation secondary_creator field
- * validate for each collection.items[<index>].data[<index>].secondary_creator exists
- * validate for each collection.items[<index>].data[<index>].secondary_creator contains secondary_creator parameter
+ * validate for each `collection.items[<index>].data[<index>].secondary_creator` exists
+ * validate for each `collection.items[<index>].data[<index>].secondary_creator` contains secondary_creator parameter
 
 ### result collection item validation title field
- * validate for each collection.items[<index>].data[<index>].title exists
- * validate for each collection.items[<index>].data[<index>].title contains each of the title parameters
+ * validate for each `collection.items[<index>].data[<index>].title` exists
+ * validate for each `collection.items[<index>].data[<index>].title` contains each of the title parameters
 
 ### result collection item validation year_start date_created field
- * validate for each collection.items[<index>].data[<index>].date_created exists
- * validate for each collection.items[<index>].data[<index>].date_created year is greater than or equal to year_start parameter
+ * validate for each `collection.items[<index>].data[<index>].date_created` exists
+ * validate for each `collection.items[<index>].data[<index>].date_created` year is greater than or equal to year_start parameter
  
 ### result collection item validation year_end date_created field
- * validate for each collection.items[<index>].data[<index>].date_created exists
- * validate for each collection.items[<index>].data[<index>].date_created year is less than or equal to year_end parameter 
+ * validate for each `collection.items[<index>].data[<index>].date_created` exists
+ * validate for each `collection.items[<index>].data[<index>].date_created` year is less than or equal to year_end parameter 
  
 
 
