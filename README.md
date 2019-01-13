@@ -3,7 +3,26 @@ Test Cases for the search end point https://images.nasa.gov/docs/images.nasa.gov
 
 Automated test cases are written in java using RestAssured, TestNg, and maven.  Test cases that have been automated are for status codes, search term parameter, center parameter, and description parameter.
  
-
+#### Table of Contents  
+1. [Test Cases](#test-cases)
+   1. [General](#general)
+   1. [Status Codes](#status-codes)
+   1. [q parameter](#q-parameter)
+   1. [center parameter](#center-parameter)
+   1. [description parameter](#description-parameter)
+   1. [description_508 parameter](#description_508-parameter)
+   1. [keywords parameter](#keywords-parameter)
+   1. [location parameter](#location-parameter)
+   1. [media_type parameter](#media_type-parameter)
+   1. [nasa_id parameter](#nasa_id-parameter)
+   1. [photographer parameter](#photographer-parameter)
+   1. [secondary_creator parameter](#secondary_creator-parameter)
+   1. [title parameter](#title-parameter)
+   1. [year_start parameter](#year_start-parameter)
+   1. [year_end parameter](#year_end-parameter)
+   1. [all parameters](#all-parameters)
+1. [Response Validations](#response-validations)
+1. [Issues Found](issues-found)
 
 ## Test Cases
 ### General
@@ -41,7 +60,7 @@ Automated test cases are written in java using RestAssured, TestNg, and maven.  
 	</tr>
 </table>
 
-### q parameter (search term)
+### q parameter
 <table valign="top">
 	<tr>
 		<th valign="top" align="left">Description</th>
@@ -78,7 +97,7 @@ Automated test cases are written in java using RestAssured, TestNg, and maven.  
 </table>
 
 
-### center parameter (NASA center)
+### center parameter
 <table valign="top">
 	<tr>
 		<th valign="top" align="left">Description</th>
@@ -106,7 +125,7 @@ Automated test cases are written in java using RestAssured, TestNg, and maven.  
 	</tr>
 </table>
 
-### description
+### description parameter
 <table valign="top">
 	<tr>
 		<th valign="top" align="left">Description</th>
@@ -145,7 +164,7 @@ Automated test cases are written in java using RestAssured, TestNg, and maven.  
 </table>
 
    
-### description_508
+### description_508 parameter
 <table valign="top">
 	<tr>
 		<th valign="top" align="left">Description</th>
@@ -183,7 +202,7 @@ Automated test cases are written in java using RestAssured, TestNg, and maven.  
 	</tr>
 </table>
   
-### keywords
+### keywords parameter
 <table valign="top">
 	<tr>
 		<th valign="top" align="left">Description</th>
@@ -232,7 +251,7 @@ Automated test cases are written in java using RestAssured, TestNg, and maven.  
 	</tr>
 </table>
 
-### location
+### location parameter
 <table valign="top">
 	<tr>
 		<th valign="top" align="left">Description</th>
@@ -270,7 +289,7 @@ Automated test cases are written in java using RestAssured, TestNg, and maven.  
 	</tr>
 </table>
 
-### media_type
+### media_type parameter
 <table valign="top">
 	<tr>
 		<th valign="top" align="left">Description</th>
@@ -309,7 +328,7 @@ Automated test cases are written in java using RestAssured, TestNg, and maven.  
 </table>
 
 
-### nasa_id
+### nasa_id parameter
 <table valign="top">
 	<tr>
 		<th valign="top" align="left">Description</th>
@@ -348,7 +367,7 @@ Automated test cases are written in java using RestAssured, TestNg, and maven.  
 </table>
 
 
-### photographer
+### photographer parameter
 <table valign="top">
 	<tr>
 		<th valign="top" align="left">Description</th>
@@ -387,7 +406,7 @@ Automated test cases are written in java using RestAssured, TestNg, and maven.  
 </table>
 
 
-### secondary_creator
+### secondary_creator parameter
 <table valign="top">
 	<tr>
 		<th valign="top" align="left">Description</th>
@@ -415,7 +434,7 @@ Automated test cases are written in java using RestAssured, TestNg, and maven.  
 	</tr>
 </table>
 
-### title
+### title parameter
 <table valign="top">
 	<tr>
 		<th valign="top" align="left">Description</th>
@@ -474,7 +493,7 @@ Automated test cases are written in java using RestAssured, TestNg, and maven.  
 </table>
 
 
-### year_start
+### year_start parameter
 <table valign="top">
 	<tr>
 		<th valign="top" align="left">Description</th>
@@ -502,7 +521,7 @@ Automated test cases are written in java using RestAssured, TestNg, and maven.  
 	</tr>
 </table>
 
-### year_end
+### year_end parameter
 <table valign="top">
 	<tr>
 		<th valign="top" align="left">Description</th>
@@ -566,7 +585,7 @@ Automated test cases are written in java using RestAssured, TestNg, and maven.  
 	</tr>
 </table>
 
-## Standard Response Validations
+## Response Validations
 Validations to be run for tests that have success response
 
 ### Standard Response Validation
