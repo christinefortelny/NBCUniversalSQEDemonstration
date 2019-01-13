@@ -22,7 +22,7 @@ Automated test cases are written in java using RestAssured, TestNg, and maven.  
    1. [year_end parameter](#year_end-parameter)
    1. [all parameters](#all-parameters)
 1. [Response Validations](#response-validations)
-1. [Found Issues](found-issues)
+1. [Issues Found](#issues-found)
 
 ## Test Cases
 ### General
@@ -661,7 +661,7 @@ Validations to be run for tests that have success response
  
 
 
-## Found Issues
+## Issues Found
 * Searching description for "puppy".  Search results were returned that include descriptions that do not contain "puppy"
 * For media type the spec lists available types  [“image”, “audio”].  "video" is also being returned and supported
 * result with nasa_id LRC-1962-B701_P-03646 has date_created of "0962-05-09T00:00:00Z"
